@@ -12,28 +12,27 @@ import Service2 from './Components/Service2';
 import Service3 from './Components/Service3';
 import Service4 from './Components/Service4';
 import CareerDetails from './Components/CareerDetails';
+import WindowScroll from './Components/WindowScroll'; // Import the ScrollToTop component
 
 function App() {
   return (
     <BrowserRouter>
+      <WindowScroll /> {/* Scroll to top on each route change */}
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/careers' element={<Careers/>} />
-        <Route path='/careerdetails' element={<CareerDetails/>} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/ppc' element={<Service1/>} />
-        <Route path='/social-media-marketing' element={<Service2/>} />
-        <Route path='/digital-marketing-services' element={<Service3/>} />
-        <Route path='/website-template' element={<Service4/>} />
-        <Route path='/privacypolicy' element={<PrivacyPolicy/>} />
-        <Route path='/termsconditions' element={<TermsConditions/>} />
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/careers' element={<Careers />} />
+        <Route path='/careerdetails' element={<CareerDetails />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/ppc' element={<Service1 />} />
+        <Route path='/social-media-marketing' element={<Service2 />} />
+        <Route path='/digital-marketing-services' element={<Service3 />} />
+        <Route path='/website-template' element={<Service4 />} />
+        <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+        <Route path='/termsconditions' element={<TermsConditions />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-
-
