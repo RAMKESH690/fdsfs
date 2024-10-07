@@ -97,7 +97,7 @@ function Careers() {
           <div className="row pt-5">
             <div className="col-lg-4 col-md-6">
               <div className="culture-box">
-              <i class="fa fa-handshake"></i>
+              <i className="fa fa-handshake"></i>
                 <h5>Collaboration</h5>
                 <p>We bring together diverse talents to create a powerful blend of creativity and teamwork, leading to breakthrough solutions.
                 </p>
@@ -105,14 +105,14 @@ function Careers() {
             </div>
             <div className="col-lg-4 col-md-6">
               <div className="culture-box">
-              <i class="fa fa-lightbulb"></i>
+              <i className="fa fa-lightbulb"></i>
                 <h5>Innovation</h5>
                 <p>We are always pushing the boundaries, thinking outside the box, and developing new ideas to stay ahead in the tech world.</p>
               </div>
             </div>
             <div className="col-lg-4 col-md-6">
               <div className="culture-box">
-              <i class="fa fa-hand-holding-heart"></i>
+              <i className="fa fa-hand-holding-heart"></i>
                 <h5>Empowerment</h5>
                 <p>We equip our team with the tools and freedom to make decisions, empowering them to take ownership and shape the future with us.</p>
               </div>

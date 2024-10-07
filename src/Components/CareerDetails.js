@@ -16,15 +16,24 @@ function CareerDetails() {
   });
 
   const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState(''); // State for success/error messages
+  const [isError, setIsError] = useState(false); 
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'resume') {
-      setFormData({ ...formData, [name]: files[0] });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
+
+  const handleFileChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      resume: e.target.files[0],
+    }));
+  };
+
 
   const validate = () => {
     const newErrors = {};
@@ -55,7 +64,7 @@ function CareerDetails() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Email being submitted:", formData.email); // Add this line for debugging
     if (!validate()) {
       return; // Stop submission if validation fails
     }
@@ -66,7 +75,7 @@ function CareerDetails() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/send-email', formPayload, {
+      const response = await axios.post('https://codezion-backend.vercel.app/send-email', formPayload, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -81,9 +90,13 @@ function CareerDetails() {
         resume: null,
         message: '',
       });
+
+      
       setErrors({}); // Clear errors on successful submission
     } catch (error) {
       console.error('Error sending email:', error);
+      setMessage('Error sending email. Please try again.');
+      setIsError(true);
     }
   };
 
@@ -194,7 +207,13 @@ function CareerDetails() {
             </div>
         </div>
         <div className="col-lg-6">
+        {message && (
+            <p style={{ color: isError ? 'red' : 'green' }}>
+              {message}
+            </p>
+          )}
           <div className="career-form">
+        
             <form onSubmit={handleSubmit}>
               <div className="row g-3">
                 <div className="col-md-6">
@@ -254,7 +273,7 @@ function CareerDetails() {
                     type="file"
                     className="form-control"
                     name="resume"
-                    onChange={handleChange}
+                    onChange={handleFileChange}
                     
                   />
                   {errors.resume && <div className="text-danger">{errors.resume}</div>}
